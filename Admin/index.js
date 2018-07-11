@@ -34,7 +34,8 @@ $(function(){
 
 
 	$(".btn-add").change(function(){
-		if ($(".add-product :input").length = 0) {
+		console.log($(".description-product").lenth)
+		if ($(".description-product").length = 0) {
 			$(".btn-add").css({"background-color": "#BDBDBD", "color": "gray"});
 		}
 		else {$(".btn-add").css({"background-color": "green", "color": "white"});}
