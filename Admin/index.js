@@ -55,7 +55,7 @@ $(function(){
 		var color = $("#color").val();
 		if (name != 0 && price != 0 && category != 0 && img != 0 && enegine != 0 && color != 0) {
 			var tableProdLength = $("#myTable tr").length;
-			$("#myTable tbody").append( '<tr class="prod"> <th scope="row">' + tableProdLength + '</th> <td>' + name + '</td><td>' + price + '</td><td>' + description + '</td><td>' + img + '</td><td>' + category + '</td><td>' + color +'</td><td><button type="button" class="btn btn-delete">Delete</button><button type="button" class="btn btn-edit">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
+			$("#myTable tbody").append( '<tr class="prod"> <th scope="row">' + tableProdLength + '</th> <td>' + name + '</td><td>' + price + '</td><td>' + description + '</td><td>' + category + '</td><td>' + img + '</td><td>' + engine +'</td><td>' + color + '</td><td><button type="button" class="btn btn-delete">Delete</button><button type="button" class="btn btn-edit">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
 			$(".description-product").get(0).reset(); }
 		$(".btn-delete").click(function(){
 			$(this).parents(".prod").remove();
