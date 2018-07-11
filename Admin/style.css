@@ -1,0 +1,118 @@
+body {
+	line-height: 30px;
+}
+.header {background-color: #6666FF;
+width: 100%;
+height: 50px;
+padding: 0;}
+h1 {color: white;
+font-size: 30px;
+margin-left: 30px;
+padding-top: 10px;}
+.col-3 {
+	text-align: left;
+	background-color: white;
+}
+a {
+	font-size: 18px;
+	line-height: 50px;
+}
+.col-9 {
+	background-color: #DCDCDC;
+	height: 1010px;
+
+}
+.order-type {display: none;
+margin-top: 40px;}
+.customer-type {display: none;
+margin-top: 40px;}
+.category-type {margin-top: 40px;
+display: none;}
+.product-type {margin-top: 40px;
+display: block;}
+.category-filter {
+	width: 300px;
+}
+ .search {
+ 	font-size: 18px;
+ 	width: 300px;
+ 	background-color: #DCDCDC;
+ 	border: none;
+ 	border-bottom: 1px solid gray;
+ }
+
+ .table-products {
+ 	margin-top: 40px;
+ 	white-space: nowrap;
+ }
+.form-check-input {
+	margin-left: 20px;
+}
+ .btn {
+ 	width: 100px;
+ 	height: 30px;
+ 	text-transform: uppercase;
+ 	border-radius: 0px;
+ 	padding-top: 4px;
+ 	color: white;
+ 	font-size: 15px;
+    }
+ .btn-delete-category{
+ 	background-color: #FF0040;
+ }
+ .btn-edit-category {
+ 	background-color: #6666FF;
+ }
+ .btn-delete {
+ 	background-color: #FF0040;
+ }
+ .btn-edit {
+ 	background-color: #6666FF;
+ }
+ input {width: 110px;
+ 	font-size: 18px;
+ 	background-color: #DCDCDC;
+ 	border: none;
+ 	border-bottom: 1px solid gray;
+ 	padding-left: 10px;}
+ select {
+ 	height: 33px;
+ 	margin-bottom: 25px;
+ 	border-radius: 0px;
+ 	background-color: #DCDCDC;
+ 	width: 110px;
+ 	display: inline-block;
+ 	border: none;
+    border-bottom: 1px solid gray;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    color: gray;
+    font-size: 18px;
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/MediaWiki_Vector_skin_action_arrow.svg/16px-MediaWiki_Vector_skin_action_arrow.svg.png");
+    background-repeat: no-repeat;
+    background-size: 15px;
+    background-position: right center;
+    line-height: 1em;
+}
+
+ option {color: gray;
+ 	font-size: 18px;}
+ .btn-add {width: 150px;
+ 	color: gray;
+ 	background-color: #BDBDBD}
+ .btn-add-category {
+ 	width: 150px;
+ 	color: white;
+ 	background-color: #6666FF;
+ }
+ .category-add {
+ 	margin-bottom: 10px;
+ }
+ .edit {
+ 	width: 30%;
+ 	border-collapse: separate;
+ 	background-color: white;
+ 	border-spacing: 10px 10px;
+ }
+ 

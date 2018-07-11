@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en" data-framework="javascript">
+
+<head>
+	<meta charset="utf-8">
+	<title>Admin Panel</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="index.js"></script>
+</head>
+<body>
+	<div class="header">
+		<h1>Admin Panel</h1>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+		<div class="col-3">
+		   <li><a href="#/categories">Categories</a></li>
+           <li><a href="#/products">Products</a></li>
+           <li><a href="#/orders">Orders</a></li>
+           <li><a href="#/customers">Customers</a></li>
+        </div>
+        <div class="col-9">
+
+
+
+
+    <div class="category-type">
+        <form class="category-add">
+         <input id="add-categoty" type="text">
+         <button type="button" class="btn btn-add-category">Add category</button>
+        </form>
+        <table class="table" id="table-category">
+         <tr>
+        	<th>#</th>
+        	<th>Category</th>
+        </tr>
+        </table>
+    </div> 
+
+
+
+    <div class="order-type">
+        <table class="table">
+         <tr>
+            <th>#</th>
+            <th>Products</th>
+            <th>Total price</th>
+            <th>Status</th>
+            <th>Info</th>
+         </tr>
+        </table>
+    </div>
+
+
+
+    <div class="customer-type">
+        <table class="table">
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+          </tr>
+        </table>
+    </div> 
+
+
+    <div class="product-type">
+    	<form>
+       <input id="search" class="search" type="search" placeholder="Search">
+       <select class="category-filter">
+       <option>Category filter</option>
+       </select>
+   </form>
+         <div class="table-products">
+        	<table class="table table-hower" id="myTable">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Description</th>
+                <th scope="col">Category</th>
+                <th spoce="col"></th>
+                <th spoce="col">Featured</th>
+              </tr>
+           </thead>
+           <tbody>
+           <!--   <tr class="prod">
+                <th scope="row">1</th>
+                   <td>Test</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td>Test</td>
+                    <td><button type="button" class="btn btn-delete">Delete</button>
+                    <button type="button" class="btn btn-edit">Edit</button></td>
+                   <td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td>
+                </tr> -->
+            </tbody>
+            </table>
+           </div>
+        </div>
+
+        <div class="add-product">
+        	<form class="description-product">
+        <label for="name"></label>
+        <input id="name" type="text" placeholder="Name*" class="req" required>
+        <label for="price"></label>
+        <input id="price" type="text" placeholder="Price*" class="req" required>
+        <label for="description"></label>
+        <input id="description" type="text" placeholder="Description">
+        <select id="category"></select>
+        <label for="img"></label>
+        <input id="img" type="url" placeholder="IMG URL*" class="req" required>
+        <label for="enegine"></label>
+        <input id="enegine" type="text" placeholder="enegine*" class="req" required>
+        <label for="color"></label>
+        <input id="color" type="text" placeholder="color*" class="req" required>
+        <button type="submit" class="btn btn-add">ADD PRODUCT</button>
+           </form>
+         </div>
+
+    </div>
+    </div>
+
+    </div>
+</body>
+</html>
