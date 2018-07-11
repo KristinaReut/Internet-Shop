@@ -34,7 +34,7 @@ $(function(){
 
 
 	$(".btn-add").change(function(){
-		if ($("#name").length != 0) {
+		if ($("#name").val() != '') {
 			$(".btn-add").css({"background-color": "#BDBDBD", "color": "gray"});
 		}
 		else {$(".btn-add").css({"background-color": "green", "color": "white"});}
