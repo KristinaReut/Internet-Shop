@@ -1,7 +1,5 @@
 $(function(){
-	$.ajax ({
-		url: ""
-	});
+
     // follow links
 	$("a[href='#/products']").click(function(){ 
 		$(".category-type").css("display", "none");
