@@ -9,7 +9,7 @@ h1 {color: white;
 font-size: 30px;
 margin-left: 30px;
 padding-top: 10px;}
-.col-3 {
+.col-2 {
 	text-align: left;
 	background-color: white;
 }
@@ -17,7 +17,7 @@ a {
 	font-size: 18px;
 	line-height: 50px;
 }
-.col-9 {
+.col-10 {
 	background-color: #DCDCDC;
 	height: 1010px;
 
