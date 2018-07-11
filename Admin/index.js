@@ -31,7 +31,6 @@ $(function(){
 		$(".customer-type").css("display", "none");
 		$(".add-product").css("display", "none");
 	});
-	console.log('test');
 	
 	// check not-required input !!!!
 
