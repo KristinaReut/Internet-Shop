@@ -34,14 +34,14 @@ $(function(){
 	
 	// check not-required input !!!!
 
-	$('.add-product :input').change(function () {
-	   if ($(".add-product input").length = 0) {
-	   	$(".btn-add").css({"background-color": "#BDBDBD", "color": "gray"});
-            } 
-        else {
-        	$(".btn-add").css({"background-color": "green", "color": "white"});
-            }
-    });
+
+	$(".btn-add").change(function(){
+		var allInput = $(".add-product input");
+		if (allInput.length = 0) {
+			$(".btn-add").css({"background-color": "#BDBDBD", "color": "gray"});
+		}
+		else {$(".btn-add").css({"background-color": "green", "color": "white"});}
+	});
 
 
 	// adding new product
