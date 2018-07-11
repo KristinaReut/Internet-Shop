@@ -51,7 +51,7 @@ $(function(){
 		var description = $("#description").val();
 		var category = $("#category").val();
 		var img = $("#img").val();
-		var enegine = $("#enegine").val();
+		var engine = $("#engine").val();
 		var color = $("#color").val();
 		if (name != 0 && price != 0 && category != 0 && img != 0 && enegine != 0 && color != 0) {
 			var tableProdLength = $("#myTable tr").length;
