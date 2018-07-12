@@ -78,7 +78,8 @@ console.log($(".add-product").val());
 			$(this).parents(".categ").remove();
 		});
 		$(".btn-edit-category").click(function(e){
-			var editing = addClass("edit")
+			var edit = $("#table-category th").addClass("edit");
+			console.log(edit);
 		});
 	});
 
