@@ -31,10 +31,8 @@ $(function(){
 	});
 	
 	// check not-required input !!!!
-
-console.log($(".add-product").val());
-	$(".btn-add").change(function(){
-		if ($(".description-product input").val() = '') {
+	$(".req").change(function(){
+		if ($(".req").length = 0) {
 			$(".btn-add").css({"background-color": "#BDBDBD", "color": "gray"});
 		}
 		else {$(".btn-add").css({"background-color": "green", "color": "white"});}
@@ -61,7 +59,7 @@ console.log($(".add-product").val());
 			$(this).parents("select #category").remove();
 		});
 		$(".btn-edit").click(function(){
-		//	$("")  редактирование
+		//	$("")  editing
         });
 	});
 
