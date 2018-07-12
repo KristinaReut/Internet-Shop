@@ -32,9 +32,9 @@ $(function(){
 	
 	// check not-required input !!!!
 
-
+console.log($(".add-product").val());
 	$(".btn-add").change(function(){
-		if ($(".description-product input").val() != '') {
+		if ($(".description-product input").val() = '') {
 			$(".btn-add").css({"background-color": "#BDBDBD", "color": "gray"});
 		}
 		else {$(".btn-add").css({"background-color": "green", "color": "white"});}
@@ -57,6 +57,9 @@ $(function(){
 		$(".btn-delete").click(function(){
 			$(this).parents(".prod").remove();
 		});
+		$(".btn-delete-category").click(function(){
+			$(this).parents("select #category").remove();
+		});
 		$(".btn-edit").click(function(){
 		//	$("")  редактирование
         });
@@ -70,7 +73,7 @@ $(function(){
 			$("#table-category").append('<tr class="categ"> <th>' + tableLength + '</th><th class="categor">' + addCategory +'</th><th><button type="button" class="btn btn-delete-category">Delete</button><button type="button" class="btn btn-edit-category">Edit</button></th></tr>');
 			$("form").get(0).reset();  
 			$("#category").append('<option class="select-category">' + addCategory + '</option>');
-			$(".category-filter").append('<option' + addCategory + '</option>')}
+			$(".category-filter").append('<option>' + addCategory + '</option>')}
 		$(".btn-delete-category").click(function(){
 			$(this).parents(".categ").remove();
 		});
