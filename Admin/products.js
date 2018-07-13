@@ -39,7 +39,7 @@ $(function () {
     });
     	//btn-delete
 	$('body').on('click','.btn-delete',(function(e){
-		let tableDelete = $(e.target).parents('.categ').remove();
+		let tableDelete = $(e.target).parents('.prod').remove();
 		console.log(tableDelete)
 		$.ajax({
 			url: 'http://localhost:2403/category/'+ tableDelete,

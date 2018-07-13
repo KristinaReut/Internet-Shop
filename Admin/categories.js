@@ -17,6 +17,43 @@ $(".btn-add-category").click(function (e) {
         $("form").get(0).reset(); 
     }
 }); 	
+//btn-delete
+	$('body').on('click','.btn-delete',(function(e){
+		let tableDelete = $(e.target).parents('.categ').remove();
+		console.log(tableDelete)
+		$.ajax({
+			url: 'http://localhost:2403/category/'+ tableDelete,
+			type: 'DELETE',
+			success: function(result){
+				$(e.target).parents('.categ').remove();
+			}
+		})
+		$.ajax({
+			url: 'http://localhost:2403/products/'+ tableDelete,
+			type: 'DELETE',
+			success: function(result){
+				$(e.target).parents('.prod').remove();
+			}
+		})
+	}));
+//btn-edit
+	$('body').on('click', '.btn-edit', (function(eb){
+
+		$.ajax({
+			url: 'http://localhost:2403/category/'+ trId,
+			type: 'PUT',
+			success: function(result){
+			
+			}
+		})
+		$.ajax({
+			url: 'http://localhost:2403/products/'+ trId,
+			type: 'PUT',
+			success: function(result){
+				
+			}
+		})
+	}));
 
 // $.ajax({
 //     url: 'http://localhost:2403/dashboard/category/',
