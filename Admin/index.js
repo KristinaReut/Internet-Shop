@@ -106,7 +106,6 @@ $(function () {
 			success: function(result){
 			
 			}
-		})
 		$.ajax({
 			url: 'http://localhost:2403/products/'+ trId,
 			type: 'PUT',
@@ -115,33 +114,7 @@ $(function () {
 			}
 		})
 	}));
-	//function editing categories
-$('body').on('click', '.editTrCat', function(e){
-    let trId = $(e.target).parents('tr').data('id');
-    $.get('http://localhost:2403/category/'+ trId, function(event){
-            //console.log(event.name);
-            $(e.target).parents('tr').html('<td></td>\
-    <td><input class="inputEditNew" value="'+event.name+'"></td>\
-    <td><button class="btn btn-danger deleteTr" >DELETE</button>\
-    <button class="btn btn-success">Save</button></td>');  
-    })  
-})
 
-//function editing product
-$('body').on('click', '.editTr', function(e){
-    let trId = $(e.target).parents('tr').data('id');
-    let nameEdit = $(e.target).parents('tr').children('td').eq(1);
-    let namePrice = $(e.target).parents('tr').children('td').eq(2);
-    let nameDescription = $(e.target).parents('tr').children('td').eq(3);
-    let nameCategories = $(e.target).parents('tr').children('td').eq(4);
-    $(e.target).parents('tr').children('td').eq(5).html('<button class="btn btn-danger deleteTr" >DELETE</button>\
-    <button class="btn btn-success">Save</button></td>'); 
-
-    nameEdit.html( '<input value="'+ nameEdit.html() +'">');
-    namePrice.html( '<input value="'+ namePrice.html() +'">');
-    nameDescription.html( '<input value="'+ nameDescription.html() +'">');
- 
-})
 
 	//adding category
 	$(".btn-add-category").click(function (en) {
