@@ -17,12 +17,12 @@
 			"id": "price",
 			"order": 1
 		},
-		"descirption": {
-			"name": "descirption",
+		"description": {
+			"name": "description",
 			"type": "string",
 			"typeLabel": "string",
 			"required": false,
-			"id": "descirption",
+			"id": "description",
 			"order": 2
 		},
 		"category": {
@@ -35,8 +35,8 @@
 		},
 		"image": {
 			"name": "image",
-			"type": "array",
-			"typeLabel": "array",
+			"type": "string",
+			"typeLabel": "string",
 			"required": false,
 			"id": "image",
 			"order": 4
@@ -56,6 +56,14 @@
 			"required": false,
 			"id": "featured",
 			"order": 6
+		},
+		"engine": {
+			"name": "engine",
+			"type": "string",
+			"typeLabel": "string",
+			"required": false,
+			"id": "engine",
+			"order": 7
 		}
 	}
 }
