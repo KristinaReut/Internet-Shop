@@ -49,7 +49,7 @@ $(function () {
 		var engine = $("#engine").val();
 		var color = $("#color").val();
 		var featured = $("#exampleCheck1").val();
-		if ()
+		
 		if (name != 0 && price != 0 && category != 0 && img != 0 && engine != 0 && color != 0) {
 			$.ajax ({
 				url: 'http://localhost:2403/products/',
@@ -79,24 +79,25 @@ $(function () {
 	});
 	//btn-delete
 	$('body').on('click','.btn-delete',(function(e){
-		let trId = $(e.target).parents('tr').data('id');
-		console.log(trId);
+		let tableDelete = $(e.target).parents('th');
+		console.log(tableDelete)
 		$.ajax({
-			url: 'http://localhost:2403/category/'+ trId,
+			url: 'http://localhost:2403/category/'+ tableDelete,
 			type: 'DELETE',
 			success: function(result){
-			
+				$(e.target).parents('th').data('id').remove();
 			}
 		})
 		$.ajax({
-			url: 'http://localhost:2403/products/'+ trId,
+			url: 'http://localhost:2403/products/'+ tableDelete,
 			type: 'DELETE',
 			success: function(result){
-				
+				$(e.target).parents('th').data('id').remove();
 			}
 		})
 	}));
-	$('body').on('click', '.btn-edit', (function(e){
+	//btn-edit
+	$('body').on('click', '.btn-edit', (function(eb){
 		let trId = $(e.target).parents('tr').data('id');
 		console.log(trId);
 		$.ajax({
@@ -114,11 +115,38 @@ $(function () {
 			}
 		})
 	}));
+	//function editing categories
+$('body').on('click', '.editTrCat', function(e){
+    let trId = $(e.target).parents('tr').data('id');
+    $.get('http://localhost:2403/category/'+ trId, function(event){
+            //console.log(event.name);
+            $(e.target).parents('tr').html('<td></td>\
+    <td><input class="inputEditNew" value="'+event.name+'"></td>\
+    <td><button class="btn btn-danger deleteTr" >DELETE</button>\
+    <button class="btn btn-success">Save</button></td>');  
+    })  
+})
+
+//function editing product
+$('body').on('click', '.editTr', function(e){
+    let trId = $(e.target).parents('tr').data('id');
+    let nameEdit = $(e.target).parents('tr').children('td').eq(1);
+    let namePrice = $(e.target).parents('tr').children('td').eq(2);
+    let nameDescription = $(e.target).parents('tr').children('td').eq(3);
+    let nameCategories = $(e.target).parents('tr').children('td').eq(4);
+    $(e.target).parents('tr').children('td').eq(5).html('<button class="btn btn-danger deleteTr" >DELETE</button>\
+    <button class="btn btn-success">Save</button></td>'); 
+
+    nameEdit.html( '<input value="'+ nameEdit.html() +'">');
+    namePrice.html( '<input value="'+ namePrice.html() +'">');
+    nameDescription.html( '<input value="'+ nameDescription.html() +'">');
+ 
+})
 
 	//adding category
-	$(".btn-add-category").click(function (e) {
+	$(".btn-add-category").click(function (en) {
 		//prevent Default functionality
-		e.preventDefault();
+		en.preventDefault();
 		var addCategory = $("#add-categoty").val();
 		var tableLength = $("#table-category tr").length;
 		if (addCategory.length > 0) {
@@ -128,9 +156,10 @@ $(function () {
 				data: { name: addCategory },
 			});
 			$("#table-category").append('<tr class="categ"> <th>' + tableLength + '</th><th class="categor">' + addCategory + '</th><th><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></th></tr>');
-			$("form").get(0).reset();
+			$("form").get(0).reset(); 
 		}
 	});
+
 	
 
 	
