@@ -27,11 +27,14 @@ margin-top: 40px;}
 .customer-type {display: none;
 margin-top: 40px;}
 .category-type {margin-top: 40px;
-display: none;}
-.product-type {margin-top: 40px;
 display: block;}
+.product-type {margin-top: 40px;
+display: none;}
 .category-filter {
 	width: 300px;
+}
+.add-product {
+	display: none;
 }
  .search {
  	font-size: 18px;
