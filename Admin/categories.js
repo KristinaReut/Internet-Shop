@@ -6,6 +6,7 @@ $(document).ready(function () {
         $('body').on('click', '.btn-add-category', (function (e) {
             //e.preventDefault();
             var addCategory = $("#add-category").val().trim();
+            console.log(addCategory);
             var tableLength = $("#table-category tr").length + 1;
             if (addCategory.length > 0) {
                 $.ajax({
