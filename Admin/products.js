@@ -1,6 +1,4 @@
-$(document).ready(function () {
-    $.get('http://localhost:2403/category/', function (data) {
-        console.log("ready", data)
+$(function () {
 	// check not-required input !!!!
 	$(".req").change(function () {
 		if ($(".req").length = 0) {
@@ -40,16 +38,25 @@ $(document).ready(function () {
         }
     });
     	//btn-delete
-	//btn-delete
-    $('body').on('click', '.btn-delete', (function () {
-        data.map(function(elem, index){
-            $.ajax({
-                url: 'http://localhost:2403/products/' + elem.id,
-                type: 'DELETE',
-            });
-        }) 
-    }));
+	$('body').on('click','.btn-delete',(function(e){
+		let tableDelete = $(e.target).parents('.prod').remove();
+		console.log(tableDelete)
+		$.ajax({
+			url: 'http://localhost:2403/category/'+ tableDelete,
+			type: 'DELETE',
+			success: function(result){
+				$(e.target).parents('.categ').remove();
+			}
+		})
+		$.ajax({
+			url: 'http://localhost:2403/products/'+ tableDelete,
+			type: 'DELETE',
+			success: function(result){
+				$(e.target).parents('.prod').remove();
+			}
+		})
+	}));
 	//btn-edit
 
-    });	
+	
 });

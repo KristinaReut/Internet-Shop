@@ -2,10 +2,11 @@
 $(document).ready(function () {
     $.get('http://localhost:2403/category/', function (data) {
         console.log('ready', data);
-        $(".btn-add-category").click(function (e) {
-            e.preventDefault();
-            var addCategory = $("#add-category").val();
-            var tableLength = $("#table-category tr").length;
+        $("#table-category").html("");
+        $('body').on('click', '.btn-add-category', (function (e) {
+            //e.preventDefault();
+            var addCategory = $("#add-category").val().trim();
+            var tableLength = $("#table-category tr").length + 1;
             if (addCategory.length > 0) {
                 $.ajax({
                     url: 'http://localhost:2403/category/',
@@ -20,15 +21,16 @@ $(document).ready(function () {
             data.map(function(elem, index){
                 var indexNew = index + 1;
                 //console.log (elem.name.length);
-                $("#table-category").val("").append('<tr class="categ"> <td>' + indexNew + '</td><td class="categor">' + elem.name + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');
+                $("#table-category").append('<tr class="categ"> <td>' + indexNew + '</td><td class="categor">' + elem.name + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');
                 //console.log('<tr><td>' + index + '</td><td>' + elem.name + '</td></tr>');
                 //console.log(elem);
+                
             });
            
         
-        });
+        }));
         //btn-delete
-        $('body').on('click', '.btn-delete', (function () {
+        $('body').on('click', '.btn-delete', (function (e) {
             data.map(function(elem, index){
                 $.ajax({
                     url: 'http://localhost:2403/category/' + elem.id,
@@ -53,14 +55,12 @@ $(document).ready(function () {
             });
         }));
         $('body').on('click', 'btn-success', (function(e){
-            console.log('sdsf');
             data.map(function(elem, index){
                 $.ajax({
-                    url: 'http://localhost:2403/category/',
+                    url: 'http://localhost:2403/category/' + elem.id,
                     type: 'POST',
                     data: {name: elem.name},
                 });
-                var indexNew = index + 1;
         $("#table-category").append('<tr class="categ"> <td>' + indexNew + '</td><td class="categor">' + elem.name + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');  
                     
                     
