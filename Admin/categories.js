@@ -5,15 +5,14 @@ $(document).ready(function () {
         
         $(".btn-add-category").click(function (e) {
             e.preventDefault();
-            var addCategory = $("#add-categoty").val();
+            var addCategory = $("#add-category").val();
             data.map(function(elem, index){
                 var indexNew = index + 1;
-                console.log (elem.name.length);
-                if (elem.name.length > 0) {
+                //console.log (elem.name.length);
+                //if (elem.name.length > 0) {
                 $("#table-category").append('<tr class="categ"> <td>' + indexNew + '</td><td class="categor">' + elem.name + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');
                 //console.log('<tr><td>' + index + '</td><td>' + elem.name + '</td></tr>');
                 //console.log(elem);
-                }
                // for (var i = 0; i < elem.length; i++) {
                
             });
