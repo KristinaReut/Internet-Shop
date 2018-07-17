@@ -2,7 +2,6 @@
 $(document).ready(function () {
     $.get('http://localhost:2403/category/', function (data) {
         console.log('ready', data);
-        
         $(".btn-add-category").click(function (e) {
             e.preventDefault();
             var addCategory = $("#add-category").val();
@@ -43,13 +42,29 @@ $(document).ready(function () {
             data.map(function(elem, index){
             $.ajax({
                 url: 'http://localhost:2403/category/' + elem.id,
-                type: 'PUT',
+                type: 'GET',
                 success: function (result) {
-                
+                    $(e.target).parents('tr').html('<td></td>\
+                    <td><input class="inputEditNew" value="'+ elem.name+'"></td>\
+                    <td><button class="btn btn-delete btn-delete-category" >DELETE</button>\
+                    <button class="btn btn-success">Save</button></td>');  
                 }
                 });
             });
-            
+        }));
+        $('body').on('click', 'btn-success', (function(e){
+            console.log('sdsf');
+            data.map(function(elem, index){
+                $.ajax({
+                    url: 'http://localhost:2403/category/',
+                    type: 'POST',
+                    data: {name: elem.name},
+                });
+                var indexNew = index + 1;
+        $("#table-category").append('<tr class="categ"> <td>' + indexNew + '</td><td class="categor">' + elem.name + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');  
+                    
+                    
+                });
         }));
 
         // $.ajax({
