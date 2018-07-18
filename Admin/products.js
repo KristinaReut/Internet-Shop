@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $.get('http://localhost:2403/products/', function (prod) {
+    $.get('http://localhost:2403/products/', function (prod, index) {
         //$("#myTable").html("");
         for (var i = 0; i < prod.length; i++) {
             console.log(prod[i]);
@@ -95,19 +95,20 @@ $(document).ready(function () {
         nameImage.html( '<input class="inputImage" value="'+ nameImage.html() +'">');
         nameColor.html( '<input class="inputColor" value="'+ nameColor.html() +'">');
 		nameEngine.html( '<input class="inputEngine" value="'+ nameEngine.html() +'">');
-            prod.map(function (elem, index) {
-                $.ajax({
-                    url: 'http://localhost:2403/products/' + elem.id,
-					type: 'GET',
-                    data: { name: elem.name,
-                        price: elem.price,
-                        description: elem.description,
-                        category: elem.category,
-                        image: elem.img,
-                        engine: elem.engine,
-                        color: elem.color},
-                });
-			});
+          //  prod.map(function (elem, index) {
+			//	console.log(prod[index].name);
+                // $.ajax({
+                //    url: 'http://localhost:2403/products/' + elem.id,
+				//	type: 'GET',
+                //    data: { name: prod[index].name,
+                //        price: prod[index].price,
+                //        description: prod[index].description,
+                //        category: prod[index].category,
+                //        image: prod[index].img,
+                //        engine: prod[index].engine,
+                //        color: prod[index].color},
+               // });
+			//});
 			
 	
 	$('body').on('click', '.btn-change', (function (e) {
