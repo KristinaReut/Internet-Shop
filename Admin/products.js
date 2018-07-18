@@ -38,7 +38,8 @@ $(document).ready(function () {
 				engine: engine,
 				color: color,
 			    featured: featured},
-			});
+            });
+
 			var tableProdLength = $("#myTable tr").length;
 			$("#myTable tbody").append('<tr class="prod"> <td>' + tableProdLength + '</td> <td>' + name + '</td><td>' + price + '</td><td>' + description + '</td><td>' + category + '</td><td>' + img + '</td><td>' + engine + '</td><td>' + color + '</td><td><button type="button" class="btn btn-delete btn-delete-products">Delete</button><button type="button" class="btn btn-edit">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
 			$(".description-product").get(0).reset();
@@ -103,8 +104,25 @@ $(document).ready(function () {
                         engine: elem.engine,
                         color: elem.color},
                 });
-            });
-    });
+			});
+			$('body').on('click', '.btn-success', (function (e) {
+				let newValueInput = nameEdit;
+				console.log(newValueInput);
+				prod.map(function (element, index) {
+					$.ajax({
+						url: 'http://localhost:2403/category/' + element.id,
+						type: 'PUT',
+						data: { name: newValueInput },
+					});
+					var indexNew = index + 1;
+					$(e.target).parents('tr').html("");
+					$("#table-category").append('<tr class="categ"> <td>' + indexNew + '</td><td class="categor">' + newValueInput + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');
+					$("#category").append('<option>' + newValueInput + '</option');
+					$(".category-filter").append('<option>' + newValueInput + '</option');
+				});
+			}));
+	});
+
 
   
     
