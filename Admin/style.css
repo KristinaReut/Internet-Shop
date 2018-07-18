@@ -60,7 +60,7 @@ display: none;}
  	color: white;
  	font-size: 15px;
     }
- .btn-delete-category{
+ .btn-delete-products{
  	background-color: #FF0040;
  }
  .btn-edit-category {
@@ -69,6 +69,7 @@ display: none;}
  .btn-delete {
  	background-color: #FF0040;
  }
+ 
  .btn-edit {
  	background-color: #6666FF;
  }

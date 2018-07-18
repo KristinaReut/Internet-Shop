@@ -4,7 +4,7 @@ $(document).ready(function () {
         for (var i = 0; i < prod.length; i++) {
             console.log(prod[i]);
             var index = i + 1;
-            $("#myTable tbody").append('<tr class="prod"> <td>' + index + '</td> <td>' + prod[i].name + '</td><td>' + prod[i].price + '</td><td>' + prod[i].description + '</td><td>' + prod[i].category + '</td><td>' + prod[i].image + '</td><td>' + prod[i].engine + '</td><td>' + prod[i].color + '</td><td><button type="button" class="btn btn-delete btn-delete-products">Delete</button><button type="button" class="btn editTr">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
+            $("#myTable tbody").append('<tr class="prod"> <td>' + index + '</td> <td>' + prod[i].name + '</td><td>' + prod[i].price + '</td><td>' + prod[i].description + '</td><td>' + prod[i].category + '</td><td>' + prod[i].image + '</td><td>' + prod[i].engine + '</td><td>' + prod[i].color + '</td><td><button type="button" class="btn btn-delete-products">Delete</button><button type="button" class="btn editTr">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
         }
 	// check not-required input !!!!
 	$(".req").change(function () {
@@ -41,7 +41,7 @@ $(document).ready(function () {
             });
 
 			var tableProdLength = $("#myTable tr").length;
-			$("#myTable tbody").append('<tr class="prod"> <td>' + tableProdLength + '</td> <td>' + name + '</td><td>' + price + '</td><td>' + description + '</td><td>' + category + '</td><td>' + img + '</td><td>' + engine + '</td><td>' + color + '</td><td><button type="button" class="btn btn-delete btn-delete-products">Delete</button><button type="button" class="btn editTr">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
+			$("#myTable tbody").append('<tr class="prod"> <td>' + tableProdLength + '</td> <td>' + name + '</td><td>' + price + '</td><td>' + description + '</td><td>' + category + '</td><td>' + img + '</td><td>' + engine + '</td><td>' + color + '</td><td><button type="button" class="btn btn-delete-products">Delete</button><button type="button" class="btn editTr">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
 			$(".description-product").get(0).reset();
         }
     });
@@ -69,8 +69,11 @@ $(document).ready(function () {
 
         for (var i = 0; i < prod.length; i++) {
             $.ajax({
-                url: 'http://localhost:2403/category/' + prod[i].id,
-                type: 'DELETE',
+                url: 'http://localhost:2403/products/' + prod[i].id,
+				type: 'DELETE',
+				success: function(result){
+					$(e.target).parents('.prod').remove();
+				}
             });
         }
 
