@@ -72,6 +72,9 @@ display: none;}
  .btn-edit {
  	background-color: #6666FF;
  }
+ .editTr {
+	background-color: #6666FF;
+ }
  input {width: 110px;
  	font-size: 18px;
  	background-color: #DCDCDC;
