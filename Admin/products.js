@@ -1,4 +1,11 @@
-$(function () {
+$(document).ready(function () {
+    $.get('http://localhost:2403/products/', function (prod) {
+        //$("#myTable").html("");
+        for (var i = 0; i < prod.length; i++) {
+            console.log(prod[i]);
+            var index = i + 1;
+            $("#myTable tbody").append('<tr class="prod"> <td>' + index + '</td> <td>' + prod[i].name + '</td><td>' + prod[i].price + '</td><td>' + prod[i].description + '</td><td>' + prod[i].category + '</td><td>' + prod[i].image + '</td><td>' + prod[i].engine + '</td><td>' + prod[i].color + '</td><td><button type="button" class="btn btn-delete btn-delete-products">Delete</button><button type="button" class="btn btn-edit">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
+        }
 	// check not-required input !!!!
 	$(".req").change(function () {
 		if ($(".req").length = 0) {
@@ -33,7 +40,7 @@ $(function () {
 			    featured: featured},
 			});
 			var tableProdLength = $("#myTable tr").length;
-			$("#myTable tbody").append('<tr class="prod"> <th scope="row">' + tableProdLength + '</th> <td>' + name + '</td><td>' + price + '</td><td>' + description + '</td><td>' + category + '</td><td>' + img + '</td><td>' + engine + '</td><td>' + color + '</td><td><button type="button" class="btn btn-delete">Delete</button><button type="button" class="btn btn-edit">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
+			$("#myTable tbody").append('<tr class="prod"> <td>' + tableProdLength + '</td> <td>' + name + '</td><td>' + price + '</td><td>' + description + '</td><td>' + category + '</td><td>' + img + '</td><td>' + engine + '</td><td>' + color + '</td><td><button type="button" class="btn btn-delete btn-delete-products">Delete</button><button type="button" class="btn btn-edit">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
 			$(".description-product").get(0).reset();
         }
     });
@@ -49,7 +56,7 @@ $(function () {
 			}
 		})
 		$.ajax({
-			url: 'http://localhost:2403/products/'+ tableDelete,
+			url: 'http://localhost:2403/products/'+ prod.id,
 			type: 'DELETE',
 			success: function(result){
 				$(e.target).parents('.prod').remove();
@@ -57,6 +64,16 @@ $(function () {
 		})
 	}));
 	//btn-edit
+    $('body').on('click', '.btn-delete-products', (function (e) {
 
+        for (var i = 0; i < prod.length; i++) {
+            $.ajax({
+                url: 'http://localhost:2403/category/' + prod[i].id,
+                type: 'DELETE',
+            });
+        }
+
+    }));
 	
+});
 });
