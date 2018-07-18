@@ -68,6 +68,7 @@ $(document).ready(function () {
         }));
         $('body').on('click', '.btn-success', (function (e) {
             let newValueInput = $('.inputEditNew').val();
+            console.log(newValueInput);
             data.map(function (element, index) {
                 $.ajax({
                     url: 'http://localhost:2403/category/' + element.id,
@@ -76,7 +77,9 @@ $(document).ready(function () {
                 });
                 var indexNew = index + 1;
                 $(e.target).parents('tr').html("");
-                $("#table-category").append('<tr class="categ"> <td>' + indexNew + '</td><td class="categor">' + element.name + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');
+                $("#table-category").append('<tr class="categ"> <td>' + indexNew + '</td><td class="categor">' + newValueInput + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');
+                $("#category").append('<option>' + newValueInput + '</option');
+                $(".category-filter").append('<option>' + newValueInput + '</option');
             });
         }));
 
