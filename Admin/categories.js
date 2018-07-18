@@ -12,7 +12,7 @@ $(document).ready(function () {
             $("#table-category").append('<tr class="categ"> <td>' + index + '</td><td class="categor">' + data[i].name + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');
         }
         $('body').on('click', '.btn-add-category', (function (e) {
-            //e.preventDefault();
+            e.preventDefault();
             var addCategory = $("#add-category").val().trim();
             console.log(addCategory);
             var tableLength = $("#table-category tr").length + 1;

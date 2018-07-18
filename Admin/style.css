@@ -72,6 +72,10 @@ display: none;}
  .btn-edit {
  	background-color: #6666FF;
  }
+ .btn-change {
+	 background-color: green;
+	 color: white;
+ }
  .editTr {
 	background-color: #6666FF;
  }

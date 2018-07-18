@@ -41,7 +41,7 @@ $(document).ready(function () {
             });
 
 			var tableProdLength = $("#myTable tr").length;
-			$("#myTable tbody").append('<tr class="prod"> <td>' + tableProdLength + '</td> <td>' + name + '</td><td>' + price + '</td><td>' + description + '</td><td>' + category + '</td><td>' + img + '</td><td>' + engine + '</td><td>' + color + '</td><td><button type="button" class="btn btn-delete btn-delete-products">Delete</button><button type="button" class="btn btn-edit">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
+			$("#myTable tbody").append('<tr class="prod"> <td>' + tableProdLength + '</td> <td>' + name + '</td><td>' + price + '</td><td>' + description + '</td><td>' + category + '</td><td>' + img + '</td><td>' + engine + '</td><td>' + color + '</td><td><button type="button" class="btn btn-delete btn-delete-products">Delete</button><button type="button" class="btn editTr">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
 			$(".description-product").get(0).reset();
         }
     });
@@ -80,22 +80,22 @@ $(document).ready(function () {
         let nameEdit = $(e.target).parents('tr').children('td').eq(1);
         let namePrice = $(e.target).parents('tr').children('td').eq(2);
         let nameDescription = $(e.target).parents('tr').children('td').eq(3);
-        let nameCategories = $(e.target).parents('tr').children('td').eq(4);
         let nameImage = $(e.target).parents('tr').children('td').eq(5);
         let nameEngine = $(e.target).parents('tr').children('td').eq(6);
-        let nameColor = $(e.target).parents('tr').children('td').eq(7);
+		let nameColor = $(e.target).parents('tr').children('td').eq(7);
+		//console.log(nameEdit.html())
         $(e.target).parents('tr').children('td').eq(8).html('<button class="btn btn-danger deleteTr" >DELETE</button>\
-        <button class="btn btn-success">Save</button></td>'); 
-        nameEdit.html( '<input value="'+ nameEdit.html() +'">');
-        namePrice.html( '<input value="'+ namePrice.html() +'">');
-        nameDescription.html( '<input value="'+ nameDescription.html() +'">');
-        nameImage.html( '<input value="'+ nameImage.html() +'">');
-        nameColor.html( '<input value="'+ nameColor.html() +'">');
-        nameEngine.html( '<input value="'+ nameEngine.html() +'">');
+        <button class="btn btn-change">Save</button></td>'); 
+        nameEdit.html( '<input class="inputEdit" value="'+ nameEdit.html() +'">');
+        namePrice.html( '<input class="inputPrice" value="'+ namePrice.html() +'">');
+        nameDescription.html( '<input class="inputDescription" value="'+ nameDescription.html() +'">');
+        nameImage.html( '<input class="inputImage" value="'+ nameImage.html() +'">');
+        nameColor.html( '<input class="inputColor" value="'+ nameColor.html() +'">');
+		nameEngine.html( '<input class="inputEngine" value="'+ nameEngine.html() +'">');
             prod.map(function (elem, index) {
                 $.ajax({
                     url: 'http://localhost:2403/products/' + elem.id,
-                    type: 'PUT',
+					type: 'GET',
                     data: { name: elem.name,
                         price: elem.price,
                         description: elem.description,
@@ -105,26 +105,40 @@ $(document).ready(function () {
                         color: elem.color},
                 });
 			});
-			$('body').on('click', '.btn-success', (function (e) {
-				let newValueInput = nameEdit;
-				console.log(newValueInput);
-				prod.map(function (element, index) {
-					$.ajax({
-						url: 'http://localhost:2403/category/' + element.id,
-						type: 'PUT',
-						data: { name: newValueInput },
-					});
-					var indexNew = index + 1;
-					$(e.target).parents('tr').html("");
-					$("#table-category").append('<tr class="categ"> <td>' + indexNew + '</td><td class="categor">' + newValueInput + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');
-					$("#category").append('<option>' + newValueInput + '</option');
-					$(".category-filter").append('<option>' + newValueInput + '</option');
-				});
-			}));
-	});
+			
+	
+	$('body').on('click', '.btn-change', (function (e) {
+		let newValueEdit = $('.inputEdit').val();
+		console.log(newValueEdit);
+		let newValuePrice = $('.inputPrice').val();
+		let newValueDescription = $('.inputDescription').val();
+		let newValueImage = $('.inputImage').val();
+		let newValueEngine = $('.inputEngine').val();
+		let newValueColor = $('.inputColor').val();
+
+		console.log(newValueEdit);
+		prod.map(function (element, index) {
+			$.ajax({
+				url: 'http://localhost:2403/products/' + element.id,
+				type: 'PUT',
+				data: { name: newValueEdit,
+					price: newValuePrice,
+					description: newValueDescription,
+					category: element.category,
+					image: newValueImage,
+					engine: newValueEngine,
+					color: newValueColor},
+			});
+			var indexNew = index + 1;
+			$(e.target).parents('tr').html("");
+			var category = $("#category").val();
+			$("#myTable tbody").append('<tr class="prod"> <td>' + indexNew + '</td> <td>' + newValueEdit + '</td><td>' + newValuePrice + '</td><td>' + newValueDescription + '</td><td>' + category + '</td><td>' + newValueImage + '</td><td>' + newValueEngine + '</td><td>' + newValueColor + '</td><td><button type="button" class="btn btn-delete btn-delete-products">Delete</button><button type="button" class="btn editTr">Edit</button></td><td> <input type="checkbox" class="form-check-input" id="exampleCheck1"></td></tr>');
+			
+		});
+	}));
 
 
-  
+});
     
 });
 });
