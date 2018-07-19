@@ -12,7 +12,7 @@ $(document).ready(function () {
             $("#table-category").append('<tr class="categ"> <td>' + index + '</td><td class="categor">' + data[i].name + '</td><td><button type="button" class="btn btn-delete btn-delete-category">Delete</button><button type="button" class="btn btn-edit btn-edit-category">Edit</button></td></tr>');
         }
         $('body').on('click', '.btn-add-category', (function (e) {
-            e.preventDefault();
+            //e.preventDefault();
             var addCategory = $("#add-category").val().trim();
             console.log(addCategory);
             var tableLength = $("#table-category tr").length + 1;
@@ -40,15 +40,22 @@ $(document).ready(function () {
         }));
         //btn-delete
         $('body').on('click', '.btn-delete', (function (e) {
-
-            for (var i = 0; i < data.length; i++) {
+        
+            
+                data.map(function (element, index) {
+                   // for (var i = 0; i < index; i++) {
+                       
+                        console.log(element.id);
                 $.ajax({
-                    url: 'http://localhost:2403/category/' + data[i].id,
+                    url: 'http://localhost:2403/category/' + element.id,
                     type: 'DELETE',
                 });
-            }
+            //}
+            });
+            
 
         }));
+        
 
         //btn-edit
         $('body').on('click', '.btn-edit', (function (e) {
